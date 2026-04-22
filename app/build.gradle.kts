@@ -43,4 +43,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
+    implementation("com.google.mlkit:image-labeling:17.0.9")
+    implementation("com.google.mlkit:text-recognition:16.0.1")
 }

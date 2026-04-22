@@ -7,4 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".Activity5">
 
+    <TextView
+        android:id="@+id/textViewA5TEST"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test: DELETE ME"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="323dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

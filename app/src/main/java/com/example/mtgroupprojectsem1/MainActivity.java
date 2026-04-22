@@ -3,6 +3,7 @@ package com.example.mtgroupprojectsem1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         ImageButton imageButtonContent = findViewById(R.id.imageButtonContent);
         ImageButton imageButtonReader = findViewById(R.id.imageButtonReader);
 
+        Button buttonImageList = findViewById(R.id.buttonImageList);
+
         imageButtonBarcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
                 intent.putExtra("type", "text");
+                startActivity(intent);
+            }
+        });
+
+        buttonImageList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity6.class);
                 startActivity(intent);
             }
         });
