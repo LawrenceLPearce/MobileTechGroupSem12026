@@ -1,5 +1,6 @@
-package com.example.mtgroupprojectsem1;
 
+package com.example.mtgroupprojectsem1;
+// activity two allows camera and image load launch.
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
