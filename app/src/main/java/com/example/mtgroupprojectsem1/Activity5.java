@@ -19,6 +19,7 @@ public class Activity5 extends AppCompatActivity {
     String imageUriString;
     String detectionType;
     String detectionResult;
+    String detectionHeading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class Activity5 extends AppCompatActivity {
         intent = getIntent();
         imageUriString  = intent.getStringExtra("image_uri");
         detectionType   = intent.getStringExtra("type");
+        detectionHeading = intent.getStringExtra("heading");
 
         // This result may have \n (newline) chracters in it, you can decide whether to strip them or keep them depending on what firebase needs.
         detectionResult = intent.getStringExtra("result");
@@ -47,7 +49,7 @@ public class Activity5 extends AppCompatActivity {
         ImageView imagePreview = findViewById(R.id.imagePreview);
         Button saveButton = findViewById(R.id.buttonSave);
 
-        editReader.setText(detectionType);
+        editReader.setText(detectionHeading);
         editResult.setText(detectionResult);
         imagePreview.setImageURI(imageUri);
 
