@@ -288,7 +288,7 @@ public class Activity2 extends AppCompatActivity {
 
                                     // pass all detection information forward.
                                     intent.putExtra("image_uri", imageFileUri.toString());   // pass URI as string
-                                    intent.putExtra("type", "barcode");
+                                    intent.putExtra("type", type);
                                     intent.putExtra("result", detectionResult);
                                     startActivity(intent);
                                 });

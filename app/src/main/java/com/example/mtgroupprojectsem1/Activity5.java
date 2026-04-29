@@ -3,6 +3,9 @@ package com.example.mtgroupprojectsem1;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -39,14 +42,17 @@ public class Activity5 extends AppCompatActivity {
         // Reconstruct URI if needed
         Uri imageUri = Uri.parse(imageUriString);
 
+        EditText editReader = findViewById(R.id.editTextTitle);
+        EditText editResult = findViewById(R.id.editTextResults);
+        ImageView imagePreview = findViewById(R.id.imagePreview);
+        Button saveButton = findViewById(R.id.buttonSave);
 
-        // example showing the info is passed forward. Delete all of this when doing actual implementation
+        editReader.setText(detectionType);
+        editResult.setText(detectionResult);
+        imagePreview.setImageURI(imageUri);
 
-        TextView textViewBody = findViewById(R.id.textViewA5TEST);
-        textViewBody.setText("");
-        textViewBody.append(imageUriString + "\n");
-        textViewBody.append(detectionType + "\n");
-        textViewBody.append(detectionResult);
+
+
 
     }
 }
