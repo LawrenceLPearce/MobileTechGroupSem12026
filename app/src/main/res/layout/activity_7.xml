@@ -18,7 +18,10 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="176dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/textView2"
