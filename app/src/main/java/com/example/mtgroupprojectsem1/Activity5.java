@@ -36,6 +36,7 @@ public class Activity5 extends AppCompatActivity {
     String imageFileName;
     String detectionType;
     String detectionResult;
+    String detectionHeading;
     String imageName;
 
     DatabaseReference dbref;
@@ -55,6 +56,7 @@ public class Activity5 extends AppCompatActivity {
         intent = getIntent();
         imageUriString  = intent.getStringExtra("image_uri");
         detectionType   = intent.getStringExtra("type");
+        detectionHeading = intent.getStringExtra("heading");
 
         String currentDateTime = LocalDateTime.now().toString();
         imageFileName = currentDateTime.replaceAll("\\D+", "");
@@ -70,7 +72,7 @@ public class Activity5 extends AppCompatActivity {
         ImageView imagePreview = findViewById(R.id.imagePreview);
         Button saveButton = findViewById(R.id.buttonSave);
 
-        editReader.setText(detectionType);
+        editReader.setText(detectionHeading);
         editResult.setText(detectionResult);
         imagePreview.setImageURI(imageUri);
 
@@ -123,6 +125,5 @@ public class Activity5 extends AppCompatActivity {
         }
     }
 }
-
 
 
