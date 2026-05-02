@@ -50,11 +50,11 @@ public class Activity2 extends AppCompatActivity {
     private static final int REQUEST_PERMISSION = 3000;
     private Uri imageFileUri;
     private ImageView imageView;
+    private String imageFileName;
     private TextView textViewBody;
     private TextView textViewHeading;
     private Button buttonEdit;
     private String type;
-
     private String detectionResult;
 
 
@@ -120,12 +120,14 @@ public class Activity2 extends AppCompatActivity {
         imageFileUri =
                 getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new
                         ContentValues());
+        imageFileName = String.valueOf(System.currentTimeMillis());
         takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
         activityResultLauncher.launch(takePhotoIntent);
     }
     public void loadImage(View view) {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        imageFileName = String.valueOf(System.currentTimeMillis());
         activityResultLauncher.launch(galleryIntent);
     }
 
@@ -288,6 +290,7 @@ public class Activity2 extends AppCompatActivity {
 
                                     // pass all detection information forward.
                                     intent.putExtra("image_uri", imageFileUri.toString());   // pass URI as string
+                                    intent.putExtra("filename", imageFileName);
                                     intent.putExtra("type", type);
                                     intent.putExtra("result", detectionResult);
                                     startActivity(intent);
