@@ -12,6 +12,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Activity7 extends AppCompatActivity {
+    Intent intent;
+    String imageUri;
+    String imageFileName;
+    String imageName;
+    String detectionResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +29,27 @@ public class Activity7 extends AppCompatActivity {
             return insets;
         });
 
+        intent = getIntent();
+        imageUri  = intent.getStringExtra("image_uri");
+        imageFileName  = intent.getStringExtra("filename");
+        imageName  = intent.getStringExtra("heading");
+        detectionResult  = intent.getStringExtra("result");
+
         Button buttonEdit = findViewById(R.id.buttonEdit);
-        buttonEdit.setOnClickListener(new View.OnClickListener() {
+        buttonEdit.setOnClickListener(v -> {
+            Intent intent = new Intent(Activity7.this, Activity5.class);
+            intent.putExtra("image_uri", imageUri);
+            intent.putExtra("filename", imageFileName);
+            intent.putExtra("result", detectionResult);
+            intent.putExtra("heading", imageName);
+            startActivity(intent);
+        });
+
+        Button buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity7.this, Activity5.class);
+                Intent intent = new Intent(Activity7.this, Activity6.class);
                 startActivity(intent);
             }
         });

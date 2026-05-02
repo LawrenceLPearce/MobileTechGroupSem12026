@@ -34,7 +34,6 @@ public class Activity5 extends AppCompatActivity {
     String imageUriString;
     Uri imageUri;
     String imageFileName;
-    String detectionType;
     String detectionResult;
     String detectionHeading;
     String imageName;
@@ -55,7 +54,6 @@ public class Activity5 extends AppCompatActivity {
         // pull all the passed forward information
         intent = getIntent();
         imageUriString  = intent.getStringExtra("image_uri");
-        detectionType   = intent.getStringExtra("type");
         detectionHeading = intent.getStringExtra("heading");
 
         String currentDateTime = LocalDateTime.now().toString();
@@ -65,7 +63,7 @@ public class Activity5 extends AppCompatActivity {
         detectionResult = intent.getStringExtra("result");
 
         // Reconstruct URI if needed
-        Uri imageUri = Uri.parse(imageUriString);
+        imageUri = Uri.parse(imageUriString);
 
         EditText editReader = findViewById(R.id.editTextTitle);
         EditText editResult = findViewById(R.id.editTextResults);
@@ -86,7 +84,7 @@ public class Activity5 extends AppCompatActivity {
                 dbref.child("reader").setValue(imageName);
                 dbref.child("text").setValue(detectionResult);
                 Bitmap bitmap = getBitmapFromUri(imageUri);
-                saveImageToGallery(bitmap, imageName, Activity5.this);
+                saveImageToGallery(bitmap, Activity5.this);
 
                 Intent intent = new Intent(Activity5.this, Activity6.class);
                 startActivity(intent);
@@ -103,10 +101,11 @@ public class Activity5 extends AppCompatActivity {
             return null;
         }
     }
-    private void saveImageToGallery(Bitmap bitmap, String fileName, Context
+
+    private void saveImageToGallery(Bitmap bitmap, Context
             context) {
         ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, imageFileName);
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
         values.put(MediaStore.Images.Media.RELATIVE_PATH,
                 Environment.DIRECTORY_PICTURES);

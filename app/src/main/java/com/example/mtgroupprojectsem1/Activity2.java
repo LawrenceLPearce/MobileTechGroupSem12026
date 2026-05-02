@@ -89,21 +89,6 @@ public class Activity2 extends AppCompatActivity {
         }
     }
 
-    public void editResults(View view) {
-        Intent intent = new Intent(this, Activity5.class);
-
-        // The image URI
-        intent.putExtra("image_uri", imageFileUri.toString());
-
-        // The detection type ("barcode", "content", or "text")
-        intent.putExtra("type", "barcode");
-
-        // The result string
-        intent.putExtra("result", detectionResult);
-
-        startActivity(intent);
-    }
-
     private boolean checkPermission() {
         String permission = android.Manifest.permission.CAMERA;
         boolean grantCamera = ContextCompat.checkSelfPermission(this, permission) ==
@@ -297,7 +282,6 @@ public class Activity2 extends AppCompatActivity {
                                     // pass all detection information forward.
                                     intent.putExtra("image_uri", imageFileUri.toString());   // pass URI as string
                                     intent.putExtra("filename", imageFileName);
-                                    intent.putExtra("type", type);
                                     intent.putExtra("result", detectionResult);
                                     intent.putExtra("heading", detectionResultHeading);
                                     startActivity(intent);
