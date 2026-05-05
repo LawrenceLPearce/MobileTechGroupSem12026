@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351636470609",
+    "project_id": "mtgroupprojectsem1",
+    "storage_bucket": "mtgroupprojectsem1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351636470609:android:02f53f9d6b23f4ca72f170",
+        "android_client_info": {
+          "package_name": "com.example.mtgroupprojectsem1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaYUNUryECw6ef1knHphey99iQ5GwfXjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
