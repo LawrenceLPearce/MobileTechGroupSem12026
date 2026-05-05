@@ -1,9 +1,12 @@
 package com.example.mtgroupprojectsem1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +24,10 @@ public class Activity7 extends AppCompatActivity {
     String imageName;
     String detectionResult;
 
+    TextView textViewHeading;
+    TextView textViewResult;
+    ImageView imageViewDisplay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +39,25 @@ public class Activity7 extends AppCompatActivity {
             return insets;
         });
 
+        // initalising the items so they actually match act 7.xml
+
+        textViewHeading = findViewById(R.id.textView);
+        textViewResult = findViewById(R.id.textView2);
+        imageViewDisplay = findViewById(R.id.imageView);
+
+        // gets the data from act 6
+
         intent = getIntent();
         imageUri  = intent.getStringExtra("image_uri");
         imageFileName  = intent.getStringExtra("filename");
         imageName  = intent.getStringExtra("heading");
         detectionResult  = intent.getStringExtra("result");
+
+        // setting the data to the UI
+
+        textViewHeading.setText(imageName);
+        textViewResult.setText(detectionResult);
+        imageViewDisplay.setImageURI(Uri.parse(imageUri));
 
         Button buttonEdit = findViewById(R.id.buttonEdit);
         buttonEdit.setOnClickListener(new View.OnClickListener() {
