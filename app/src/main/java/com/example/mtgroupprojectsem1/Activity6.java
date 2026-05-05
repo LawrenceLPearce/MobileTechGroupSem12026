@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Activity6 extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class Activity6 extends AppCompatActivity {
 
     ArrayList<ListItemModel> itemList;
     CustomAdapter adapter;
-    String imageUri;
+    Uri imageUri;
     String imageFileName;
     String imageName;
     String detectionResult;
@@ -54,8 +55,6 @@ public class Activity6 extends AppCompatActivity {
 
         listView = findViewById(R.id.listViewAct6);
         buttonAdd = findViewById(R.id.buttonAdd);
-
-        // TEMP DATA
         itemList = new ArrayList<>();
         adapter = new CustomAdapter(this, itemList);
 
@@ -65,11 +64,12 @@ public class Activity6 extends AppCompatActivity {
 
         // list item click
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            ListItemModel clickedItem = itemList.get(position);
             Intent intent = new Intent(Activity6.this, Activity7.class);
-            intent.putExtra("image_uri", imageUri);
-            intent.putExtra("filename", imageFileName);
-            intent.putExtra("result", detectionResult);
-            intent.putExtra("heading", imageName);
+            intent.putExtra("image_uri", clickedItem.imageUri.toString());
+            intent.putExtra("filename", clickedItem.imageFileName);
+            intent.putExtra("result", clickedItem.detectionResult);
+            intent.putExtra("heading", clickedItem.imageName);
             startActivity(intent);
         });
 
@@ -83,10 +83,14 @@ public class Activity6 extends AppCompatActivity {
     class ListItemModel {
         String imageName;
         Uri imageUri;
+        String detectionResult;
+        String imageFileName;
 
-        public ListItemModel(String imageName, Uri imageUri) {
+        public ListItemModel(String imageName, Uri imageUri, String detectionResult, String imageFileName) {
             this.imageName = imageName;
             this.imageUri = imageUri;
+            this.detectionResult = detectionResult;
+            this.imageFileName = imageFileName;
         }
     }
     class CustomAdapter extends ArrayAdapter<ListItemModel> {
@@ -132,9 +136,9 @@ public class Activity6 extends AppCompatActivity {
                     imageName = child.child("reader").getValue(String.class);
                     detectionResult = child.child("text").getValue(String.class);
 
-                    Uri imageUri = findImageUri(imageFileName);
+                    imageUri = findImageUri(imageFileName);
 
-                    itemList.add(new ListItemModel(imageName, imageUri));
+                    itemList.add(new ListItemModel(imageName, imageUri, detectionResult, imageFileName));
                 }
 
                 adapter.notifyDataSetChanged();

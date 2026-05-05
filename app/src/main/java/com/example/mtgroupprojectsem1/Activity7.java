@@ -11,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Activity7 extends AppCompatActivity {
     Intent intent;
     String imageUri;
@@ -36,20 +39,27 @@ public class Activity7 extends AppCompatActivity {
         detectionResult  = intent.getStringExtra("result");
 
         Button buttonEdit = findViewById(R.id.buttonEdit);
-        buttonEdit.setOnClickListener(v -> {
-            Intent intent = new Intent(Activity7.this, Activity5.class);
-            intent.putExtra("image_uri", imageUri);
-            intent.putExtra("filename", imageFileName);
-            intent.putExtra("result", detectionResult);
-            intent.putExtra("heading", imageName);
-            startActivity(intent);
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity7.this, Activity5.class);
+                intent.putExtra("image_uri", imageUri);
+                intent.putExtra("filename", imageFileName);
+                intent.putExtra("result", detectionResult);
+                intent.putExtra("heading", imageName);
+                startActivity(intent);
+            }
         });
+//        20260505124923024528
 
         Button buttonDelete = findViewById(R.id.buttonDelete);
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity7.this, Activity6.class);
+//                intent.putExtra("filename", imageFileName);
+                DatabaseReference dbref = FirebaseDatabase.getInstance().getReference(imageFileName);
+                dbref.removeValue();
                 startActivity(intent);
             }
         });

@@ -44,6 +44,7 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Activity2 extends AppCompatActivity {
@@ -106,14 +107,16 @@ public class Activity2 extends AppCompatActivity {
         imageFileUri =
                 getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new
                         ContentValues());
-        imageFileName = String.valueOf(System.currentTimeMillis());
+        String currentDateTime = LocalDateTime.now().toString();
+        imageFileName = currentDateTime.replaceAll("\\D+", "");
         takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
         activityResultLauncher.launch(takePhotoIntent);
     }
     public void loadImage(View view) {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        imageFileName = String.valueOf(System.currentTimeMillis());
+        String currentDateTime = LocalDateTime.now().toString();
+        imageFileName = currentDateTime.replaceAll("\\D+", "");
         activityResultLauncher.launch(galleryIntent);
     }
 

@@ -55,9 +55,10 @@ public class Activity5 extends AppCompatActivity {
         intent = getIntent();
         imageUriString  = intent.getStringExtra("image_uri");
         detectionHeading = intent.getStringExtra("heading");
+        imageFileName = intent.getStringExtra("filename");
 
-        String currentDateTime = LocalDateTime.now().toString();
-        imageFileName = currentDateTime.replaceAll("\\D+", "");
+//        String currentDateTime = LocalDateTime.now().toString();
+//        imageFileName = currentDateTime.replaceAll("\\D+", "");
 
         // This result may have \n (newline) characters in it, you can decide whether to strip them or keep them depending on what firebase needs.
         detectionResult = intent.getStringExtra("result");
