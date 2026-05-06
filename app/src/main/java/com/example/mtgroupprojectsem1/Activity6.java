@@ -4,6 +4,7 @@ import static java.security.AccessController.getContext;
 
 import android.content.ContentUris;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,6 +22,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -118,6 +120,20 @@ public class Activity6 extends AppCompatActivity {
             if (item.imageUri != null) {
                 imageView.setImageURI(item.imageUri);
             }
+
+            // alternating rows
+
+            // if the row's position mod 2 = 0 (which is even numbers), set the colour to grey
+            if (position % 2 == 0)
+            {
+                convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.even));
+            }
+            else // otherwise, set the colour to white (odd numbers)
+            {
+                convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.odd));
+            }
+
+
 
             return convertView;
         }
