@@ -140,9 +140,6 @@ public class Activity2 extends AppCompatActivity {
                                 textViewBody.append(Html.fromHtml("<font color='black'><b>Recognised image content:</b></font><br>",Html.FROM_HTML_MODE_LEGACY));
                                 int counter = 1;
                                 for (ImageLabel label : labels) {
-                                    if (counter == 1) { // save the heading
-                                        detectionResultHeading = label.getText();
-                                    }
                                     String result = label.getText();
                                     float confidence = label.getConfidence();
                                     String line = " " + counter + ". " + result + " (" + String.format("%.1f", confidence * 100.0f) + "% confidence)\n";
@@ -174,7 +171,6 @@ public class Activity2 extends AppCompatActivity {
                                 sb.append("Extracted text:\n");
                                 textViewBody.setText("");
                                 textViewBody.append(Html.fromHtml("<font color='black'><b>Extracted text:</b></font><br>", Html.FROM_HTML_MODE_LEGACY));
-                                detectionResultHeading = "Text Reader";
                                 String result = visionText.getText();
                                 if (result.length() > 1) {
                                     sb.append(" ").append(result).append("\n");
@@ -209,7 +205,6 @@ public class Activity2 extends AppCompatActivity {
                         sb.append("Detected barcode:\n");
                         textViewBody.setText("");
                         textViewBody.append(Html.fromHtml("<font color='black'><b>Detected barcode:</b></font><br>", Html.FROM_HTML_MODE_LEGACY));
-                        detectionResultHeading = "Barcode";
                         String result = "";
                         for (Barcode barcode : barcodes) {
                             result = barcode.getRawValue();
@@ -258,14 +253,17 @@ public class Activity2 extends AppCompatActivity {
                                     switch (type) {
                                         case "barcode":
                                             textViewHeading.setText("Barcode Reader");
+                                            detectionResultHeading = "Barcode Reader";
                                             processImageFromBarcodeReader(image);
                                             break;
                                         case "content":
                                             textViewHeading.setText("Content Reader");
+                                            detectionResultHeading = "Content Reader";
                                             processImageFromContentReader(image);
                                             break;
                                         case "text":
                                             textViewHeading.setText("Text Reader");
+                                            detectionResultHeading = "Text Reader";
                                             processImageFromTextReader(image);
                                             break;
                                     }

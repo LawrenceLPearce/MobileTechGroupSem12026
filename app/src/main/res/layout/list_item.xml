@@ -19,12 +19,12 @@
         android:id="@+id/textTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:text="Title"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imageViewItem"
-        app:layout_constraintTop_toTopOf="@id/imageViewItem"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="12dp"/>
+        app:layout_constraintStart_toEndOf="@id/imageViewItem"
+        app:layout_constraintTop_toTopOf="@id/imageViewItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

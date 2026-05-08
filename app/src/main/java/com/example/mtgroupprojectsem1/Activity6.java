@@ -126,11 +126,11 @@ public class Activity6 extends AppCompatActivity {
             // if the row's position mod 2 = 0 (which is even numbers), set the colour to grey
             if (position % 2 == 0)
             {
-                convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.even));
+                convertView.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
             else // otherwise, set the colour to white (odd numbers)
             {
-                convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.odd));
+                convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));
             }
 
 
