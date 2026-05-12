@@ -140,6 +140,9 @@ public class Activity2 extends AppCompatActivity {
                                 textViewBody.append(Html.fromHtml("<font color='black'><b>Recognised image content:</b></font><br>",Html.FROM_HTML_MODE_LEGACY));
                                 int counter = 1;
                                 for (ImageLabel label : labels) {
+                                    if (counter == 5) { // only save first 4.
+                                        break;
+                                    }
                                     String result = label.getText();
                                     float confidence = label.getConfidence();
                                     String line = " " + counter + ". " + result + " (" + String.format("%.1f", confidence * 100.0f) + "% confidence)\n";
@@ -249,7 +252,7 @@ public class Activity2 extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 if (image != null) {
-                                    // Call correct depending on context
+                                    // Call correct module depending on context
                                     switch (type) {
                                         case "barcode":
                                             textViewHeading.setText("Barcode Reader");
@@ -270,10 +273,6 @@ public class Activity2 extends AppCompatActivity {
 
                                 }
 
-// TODO: replace this with real ML Kit results later
-                                //textViewBody.setText("Detected barcode:\n1. Result one\n2. Result two");
-
-// Show the edit button
 
 
                                 buttonEdit.setVisibility(View.VISIBLE);
